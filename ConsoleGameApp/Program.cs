@@ -6,7 +6,11 @@ namespace ConsoleGameApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Game game = new Game();
+            game.Run();
+
+            Console.WriteLine("Thanks for playing");
+            Console.ReadKey();
         }
     }
 }
