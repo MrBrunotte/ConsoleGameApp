@@ -4,7 +4,7 @@ namespace ConsoleGameApp
 {
     internal class Hero : Creature
     {
-        public Hero(Cell cell) :base(cell, "H ")
+        public Hero(Cell cell) : base(cell, "H ")
         {
             Color = ConsoleColor.Yellow;
         }
