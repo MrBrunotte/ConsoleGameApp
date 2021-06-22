@@ -8,18 +8,16 @@ namespace ConsoleGameApp
 {
     public class Cell : IDrawable
     {
-        public int X { get; }
-        public int Y { get; }
+        public Position Position { get; set; }
         public List<Item> Items { get; set; } = new List<Item>();
         public string Symbol => ". ";
 
         public ConsoleColor Color { get; set; }
 
-        public Cell(int y, int x)
+        public Cell(Position position)
         {
             Color = ConsoleColor.Red;
-            Y = y;
-            X = x;
+            Position = position;
         }
     }
 }
