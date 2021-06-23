@@ -33,5 +33,10 @@ namespace ConsoleGameApp
             }
             Console.ForegroundColor = Console.ForegroundColor = ConsoleColor.White;
         }
+
+        internal static void PrintLog()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
