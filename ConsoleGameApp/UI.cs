@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace ConsoleGameApp
 {
@@ -23,8 +24,8 @@ namespace ConsoleGameApp
                 for (int x = 0; x < map.Height; x++)
                 {
                     Cell cell = map.GetCell(y, x);
-                    IDrawable drawable = map.CreaturAt(cell) ?? cell;
-                   //IDrawable drawable = map.Creatures.CreatureAtExtension(cell) ?? cell;
+                    IDrawable drawable = map.CreaturAt(cell) ?? (IDrawable)cell.Items.FirstOrDefault() ??  cell;
+                   
 
                     Console.ForegroundColor = drawable?.Color ?? ConsoleColor.White;
                     Console.Write(drawable?.Symbol);
