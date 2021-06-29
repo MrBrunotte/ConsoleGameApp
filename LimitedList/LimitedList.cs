@@ -7,7 +7,7 @@ namespace LimitedList
     public class LimitedList<T> : IEnumerable<T>
     {
         private readonly int capacity;
-        private readonly List<T> list;
+        protected readonly List<T> list;
         public LimitedList(int capacity)
         {
             this.capacity = Math.Max(0, capacity);
