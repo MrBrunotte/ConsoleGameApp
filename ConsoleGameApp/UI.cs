@@ -14,10 +14,7 @@ namespace ConsoleGameApp
 
         public static void PrintLog()
         {
-            foreach (var item in messageLog)
-            {
-                Console.WriteLine(item);
-            }
+            messageLog.ActionAll(m => Console.WriteLine(m));
         }
         internal static ConsoleKey GetKey()
         {
@@ -39,9 +36,20 @@ namespace ConsoleGameApp
                 {
                     Cell cell = map.GetCell(y, x);
                     IDrawable drawable = map.CreaturAt(cell) ?? (IDrawable)cell.Items.FirstOrDefault() ??  cell;
-                   
+
 
                     Console.ForegroundColor = drawable?.Color ?? ConsoleColor.White;
+                    // Same exact code as above!!
+                    //if (drawable is null)
+                    //{
+                    //    Console.ForegroundColor = ConsoleColor.White;
+                    //}
+                    //else
+                    //{
+                    //    Console.ForegroundColor = drawable.Color;
+                    //}
+
+
                     Console.Write(drawable?.Symbol);
                 }
                 Console.WriteLine();
@@ -49,9 +57,11 @@ namespace ConsoleGameApp
             Console.ForegroundColor = Console.ForegroundColor = ConsoleColor.White;
         }
 
-        internal static void PrintLog()
+        internal static void PrintStats(string stats)
         {
-            throw new NotImplementedException();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(stats);
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

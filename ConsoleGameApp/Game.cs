@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -49,17 +50,28 @@ namespace ConsoleGameApp
                 case ConsoleKey.DownArrow:
                     Move(Direction.South);
                     break;
-                case ConsoleKey.P:
-                    PickUp();
-                    break;
-                case ConsoleKey.I:
-                    Inventory();
-                    break;
+                //case ConsoleKey.P:
+                //    PickUp();
+                //    break;
+                //case ConsoleKey.I:
+                //    Inventory();
+                //    break;
                 case ConsoleKey.Q:
                     Environment.Exit(0);
                     break;
                 default:
                     break;
+            }
+            var actionMeny = new Dictionary<ConsoleKey, Action>()
+            {
+                {ConsoleKey.P, PickUp },
+                {ConsoleKey.I, Inventory }
+            };
+
+            if (actionMeny.ContainsKey(keyPressed))
+            {
+                var method = actionMeny[keyPressed];
+                method?.Invoke();
             }
         }
 
@@ -103,6 +115,9 @@ namespace ConsoleGameApp
         {
             UI.Clear();
             UI.Draw(map);
+            UI.PrintStats($"Health: {hero.Health}" +
+                          $"\nEnemies: {map.Creatures.Count}");
+            UI.PrintLog();
         }
 
         private void Initialize()
